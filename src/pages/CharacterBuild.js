@@ -134,8 +134,8 @@ const CharacterBuild = () => {
             </div>
             <div>
                 <form>
-                    <input type="text" onChange={(e) => setCharName(e.target.value)} value={charName} />
-                    <input type="text" onChange={(e) => setCharClass(e.target.value)} value={charClass} />
+                    <input type="text" onChange={(e) => setCharName(e.target.value)} value={charName} placeholder='Name' />
+                    <input type="text" onChange={(e) => setCharClass(e.target.value)} value={charClass} placeholder='Class' />
                     <h3>Race</h3>
                     <select onChange={handleRaceChange}>
                         <option value={['', 0]} >Select Race</option>

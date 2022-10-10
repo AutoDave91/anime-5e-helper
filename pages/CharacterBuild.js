@@ -31,22 +31,22 @@ const CharacterBuild = () => {
             let abilityScoreArr = event.target.value.split(",");
             let abilityScoreObj = { 'score': abilityScoreArr[0], 'value': +abilityScoreArr[1] }
 
-            if (ability == 'strength') {
+            if (ability === 'strength') {
                 setStrength(abilityScoreObj)
             }
-            if (ability == 'dexterity') {
+            if (ability === 'dexterity') {
                 setDexterity(abilityScoreObj)
             }
-            if (ability == 'constitution') {
+            if (ability === 'constitution') {
                 setConstitution(abilityScoreObj)
             }
-            if (ability == 'intelligence') {
+            if (ability === 'intelligence') {
                 setIntelligence(abilityScoreObj)
             }
-            if (ability == 'wisdom') {
+            if (ability === 'wisdom') {
                 setWisdom(abilityScoreObj)
             }
-            if (ability == 'charisma') {
+            if (ability === 'charisma') {
                 setCharisma(abilityScoreObj)
             }
         }

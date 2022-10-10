@@ -17,7 +17,8 @@ const CharacterBuild = () => {
     const [charisma, setCharisma] = useState({ 'value': 0 })
 
     const absOptions = [['1', -5], ['2', -4], ['3', -4], ['4', -3], ['5', -3], ['6', -2], ['7', -2], ['8', -1], ['9', -1], ['10', 0], ['11', 0], ['12', 1], ['13', 1], ['14', 2], ['15', 2], ['16', 3], ['17', 3], ['18', 4], ['19', 4], ['20', 5], ['21', 5], ['22', 6], ['23', 6], ['24', 7], ['25', 7], ['26', 8], ['27', 8], ['28 ', 9], ['29', 9], ['30', 10]];
-    // const [update, setUpdate] = useState(false);
+    const raceOptions = [['Archfiend', 15], ['Asrai', 11], ['Blinkbeast', 10], ['Demonaga', 14], ['Dragonborn', 9], ['Dwarf - Hill', 12], ['Dwarf - Mountain', 14], ['Elf - Dark', 13], ['Elf - High', 12], ['Elf - Wood', 11], ['Fairy', 4], ['Gnome - Forest', 4], ['Gnome - Rock', 4], ['Half-Dragon', 13], ['Half-Elf', 10], ['Half-Orc', 8], ['Half-Troll', 9], ['Halfling - Lightfoot', 3], ['Halfling - Stout', 5], ['Haud', 12], ['Human', 7], ['Kodama', 10], ['Parasite', 16], ['Satyr', 7], ['Slime', 11], ['Tiefling', 12]];
+    const attOptions = [];
 
     const handleRaceChange = (event) => {
         if (event.target.value) {
@@ -26,7 +27,7 @@ const CharacterBuild = () => {
             setSelectedClass(raceObj)
         }
     };
-    const handleAttributeScoreChange = (event, ability) => {
+    const handleAbilityScoreChange = (event, ability) => {
         if (event.target.value) {
             let abilityScoreArr = event.target.value.split(",");
             let abilityScoreObj = { 'score': abilityScoreArr[0], 'value': +abilityScoreArr[1] }
@@ -80,19 +81,19 @@ const CharacterBuild = () => {
                 <p>{usedPoints} / 80 points used</p>
             </div>
             <div>
-                <h2>Character build form</h2>
                 <form>
+                    <h3>Race</h3>
                     <select onChange={handleRaceChange}>
                         <option value={['', 0]} >Select Race</option>
-                        <option value={['Race 2', 5]} >test 2 Race</option>
-                        <option value={['Race 1', 10]} > Test Race</option>
+                        {raceOptions.map((race) => <option value={race} >{race[0]}</option>)}
                     </select>
                     <div>
                         <h3>Ability Scores</h3>
-                        <div>
+                        <p>{`(point buy)`}</p>
+                        <div className="abilityScoreWrapper">
                             <div>
                                 <h4>Strength</h4>
-                                <select onChange={(e) => handleAttributeScoreChange(e, 'strength')}>
+                                <select onChange={(e) => handleAbilityScoreChange(e, 'strength')}>
                                     <option value={['', 0]} >Ability Score</option>
                                     {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
 
@@ -101,7 +102,7 @@ const CharacterBuild = () => {
                             </div>
                             <div>
                                 <h4>Dexterity</h4>
-                                <select onChange={(e) => handleAttributeScoreChange(e, 'dexterity')}>
+                                <select onChange={(e) => handleAbilityScoreChange(e, 'dexterity')}>
                                     <option value={['', 0]} >Ability Score</option>
                                     {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
 
@@ -110,7 +111,7 @@ const CharacterBuild = () => {
                             </div>
                             <div>
                                 <h4>Constitution</h4>
-                                <select onChange={(e) => handleAttributeScoreChange(e, 'constitution')}>
+                                <select onChange={(e) => handleAbilityScoreChange(e, 'constitution')}>
                                     <option value={['', 0]} >Ability Score</option>
                                     {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
 
@@ -119,7 +120,7 @@ const CharacterBuild = () => {
                             </div>
                             <div>
                                 <h4>Intelligence</h4>
-                                <select onChange={(e) => handleAttributeScoreChange(e, 'intelligence')}>
+                                <select onChange={(e) => handleAbilityScoreChange(e, 'intelligence')}>
                                     <option value={['', 0]} >Ability Score</option>
                                     {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
 
@@ -128,7 +129,7 @@ const CharacterBuild = () => {
                             </div>
                             <div>
                                 <h4>Wisdom</h4>
-                                <select onChange={(e) => handleAttributeScoreChange(e, 'wisdom')}>
+                                <select onChange={(e) => handleAbilityScoreChange(e, 'wisdom')}>
                                     <option value={['', 0]} >Ability Score</option>
                                     {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
 
@@ -137,7 +138,7 @@ const CharacterBuild = () => {
                             </div>
                             <div>
                                 <h4>Charisma</h4>
-                                <select onChange={(e) => handleAttributeScoreChange(e, 'charisma')}>
+                                <select onChange={(e) => handleAbilityScoreChange(e, 'charisma')}>
                                     <option value={['', 0]} >Ability Score</option>
                                     {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
 
@@ -145,6 +146,11 @@ const CharacterBuild = () => {
                                 <div>{charisma && <p>{charisma.value >= 1 ? `+${charisma.value}` : charisma.value}</p>}</div>
                             </div>
                         </div>
+                        <h3>Attributes</h3>
+                        <select onChange={handleRaceChange}>
+                            <option value={['', 0]} >Attributes</option>
+                            {attOptions.map((att) => <option value={att} >{att[0]}</option>)}
+                        </select>
                     </div>
                 </form>
             </div >

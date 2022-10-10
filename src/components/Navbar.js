@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
 
     return (
-        <header className="container">
+        <header className="navMenu">
             <Link to="/">
                 <h1>Anime 5e Helper</h1>
             </Link>

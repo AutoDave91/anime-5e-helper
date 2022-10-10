@@ -228,6 +228,7 @@ const CharacterBuild = () => {
                 <div>
                     <h2>Character Preview</h2>
                     <h3>{charName && charName}</h3>
+                    <h4>Points Remaining: {80 - usedPoints}</h4>
                     <h4>{selectedRace && selectedRace.name} {charClass && charClass}</h4>
                     <div className="abilityScoreWrapper">
                         <div>

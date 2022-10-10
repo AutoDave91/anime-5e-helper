@@ -15,10 +15,13 @@ const CharacterBuild = () => {
     const [intelligence, setIntelligence] = useState({ 'value': 0 })
     const [wisdom, setWisdom] = useState({ 'value': 0 })
     const [charisma, setCharisma] = useState({ 'value': 0 })
+    const [overBudget, setOverBudget] = useState(false)
+    const [attribute, setAttribute] = useState({ 'value': 0 })
+    const [attList, setAttList] = useState([])
 
     const absOptions = [['1', -5], ['2', -4], ['3', -4], ['4', -3], ['5', -3], ['6', -2], ['7', -2], ['8', -1], ['9', -1], ['10', 0], ['11', 0], ['12', 1], ['13', 1], ['14', 2], ['15', 2], ['16', 3], ['17', 3], ['18', 4], ['19', 4], ['20', 5], ['21', 5], ['22', 6], ['23', 6], ['24', 7], ['25', 7], ['26', 8], ['27', 8], ['28 ', 9], ['29', 9], ['30', 10]];
     const raceOptions = [['Archfiend', 15], ['Asrai', 11], ['Blinkbeast', 10], ['Demonaga', 14], ['Dragonborn', 9], ['Dwarf - Hill', 12], ['Dwarf - Mountain', 14], ['Elf - Dark', 13], ['Elf - High', 12], ['Elf - Wood', 11], ['Fairy', 4], ['Gnome - Forest', 4], ['Gnome - Rock', 4], ['Half-Dragon', 13], ['Half-Elf', 10], ['Half-Orc', 8], ['Half-Troll', 9], ['Halfling - Lightfoot', 3], ['Halfling - Stout', 5], ['Haud', 12], ['Human', 7], ['Kodama', 10], ['Parasite', 16], ['Satyr', 7], ['Slime', 11], ['Tiefling', 12]];
-    const attOptions = [];
+    const attOptions = [['+10', 10]];
 
     const handleRaceChange = (event) => {
         if (event.target.value) {
@@ -53,6 +56,15 @@ const CharacterBuild = () => {
         }
     };
 
+    const handleAttChange = (event) => {
+        if (event.target.value) {
+            let attArr = event.target.value.split(",");
+            let attObj = { 'name': attArr[0], 'value': +attArr[1] }
+            setAttList([attObj.name, ...attList])
+            setAttribute(attObj)
+        }
+    };
+
     useEffect(() => {
         const totalPoints = () => {
             let total = (
@@ -62,23 +74,25 @@ const CharacterBuild = () => {
                 +constitution.value +
                 +intelligence.value +
                 +wisdom.value +
-                +charisma.value
+                +charisma.value +
+                +attribute.value
             )
-            // if (selectedClass.value) {
-            //     total += +selectedClass.value
-            // }
-            // total += +abilityScore.value
             setUsedPoints(total)
+        }
+        if (usedPoints > 80) {
+            setOverBudget(true);
+        } else if (usedPoints <= 80) {
+            setOverBudget(false)
         }
 
         totalPoints();
-    })
+    }, [setOverBudget, selectedClass.value, strength.value, dexterity.value, constitution.value, intelligence.value, wisdom.value, charisma.value, usedPoints, attribute.value])
 
     return (
         <div>
             <h1>Character Build</h1>
             <div>
-                <p>{usedPoints} / 80 points used</p>
+                {!overBudget ? (<p>{usedPoints} / 80 points used</p>) : (<p className="overB">{usedPoints} / 80 points used</p>)}
             </div>
             <div>
                 <form>
@@ -147,10 +161,14 @@ const CharacterBuild = () => {
                             </div>
                         </div>
                         <h3>Attributes</h3>
-                        <select onChange={handleRaceChange}>
+                        <select onChange={handleAttChange}>
                             <option value={['', 0]} >Attributes</option>
                             {attOptions.map((att) => <option value={att} >{att[0]}</option>)}
                         </select>
+                        <ul>
+                            {console.log(attList)}
+                            {attList && attList.map((att) => <li>{att}</li>)}
+                        </ul>
                     </div>
                 </form>
             </div >

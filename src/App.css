@@ -1,6 +1,18 @@
 .App {
   text-align: center;
   width: 100vw;
+  min-height: 100vh;
+  font-family: 'MedievalSharp';
+  font-size: 20px;
+  background-image: url('./assets/fantasy-background.png');
+  background-size: cover;
+  width: 100% - 30px;
+  height: 100%;
+  color: white;
+}
+
+a {
+  color: white;
 }
 
 .App-header {
@@ -20,6 +32,12 @@
   justify-content: space-around;
 }
 
+.abilityScoreBlock {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px 10px 20px;
+  border-radius: 20px;
+}
+
 .overB {
   color: red;
 }
@@ -32,4 +50,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.pages {
+  /* background-image: url('./assets/fantasy-background.png');
+  background-size: cover; */
+  width: 100% - 30px;
+  height: 100%;
+  /* color: white; */
+  padding: 15px 100px 15px 50px;
 }

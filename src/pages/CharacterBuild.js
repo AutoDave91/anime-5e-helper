@@ -145,7 +145,7 @@ const CharacterBuild = () => {
                         <h3>Ability Scores</h3>
                         <p>{`(point buy)`}</p>
                         <div className="abilityScoreWrapper">
-                            <div>
+                            <div className='abilityScoreBlock'>
                                 <h4>Strength</h4>
                                 <select onChange={(e) => handleAbilityScoreChange(e, 'strength')}>
                                     <option value={['', 0]} >Ability Score</option>
@@ -154,7 +154,7 @@ const CharacterBuild = () => {
                                 </select>
                                 <div>{strength && <p>{strength.value >= 1 ? `+${strength.value}` : strength.value}</p>}</div>
                             </div>
-                            <div>
+                            <div className='abilityScoreBlock'>
                                 <h4>Dexterity</h4>
                                 <select onChange={(e) => handleAbilityScoreChange(e, 'dexterity')}>
                                     <option value={['', 0]} >Ability Score</option>
@@ -163,7 +163,7 @@ const CharacterBuild = () => {
                                 </select>
                                 <div>{dexterity && <p>{dexterity.value >= 1 ? `+${dexterity.value}` : dexterity.value}</p>}</div>
                             </div>
-                            <div>
+                            <div className='abilityScoreBlock'>
                                 <h4>Constitution</h4>
                                 <select onChange={(e) => handleAbilityScoreChange(e, 'constitution')}>
                                     <option value={['', 0]} >Ability Score</option>
@@ -172,7 +172,7 @@ const CharacterBuild = () => {
                                 </select>
                                 <div>{constitution && <p>{constitution.value >= 1 ? `+${constitution.value}` : constitution.value}</p>}</div>
                             </div>
-                            <div>
+                            <div className='abilityScoreBlock'>
                                 <h4>Intelligence</h4>
                                 <select onChange={(e) => handleAbilityScoreChange(e, 'intelligence')}>
                                     <option value={['', 0]} >Ability Score</option>
@@ -181,7 +181,7 @@ const CharacterBuild = () => {
                                 </select>
                                 <div>{intelligence && <p>{intelligence.value >= 1 ? `+${intelligence.value}` : intelligence.value}</p>}</div>
                             </div>
-                            <div>
+                            <div className='abilityScoreBlock'>
                                 <h4>Wisdom</h4>
                                 <select onChange={(e) => handleAbilityScoreChange(e, 'wisdom')}>
                                     <option value={['', 0]} >Ability Score</option>
@@ -190,7 +190,7 @@ const CharacterBuild = () => {
                                 </select>
                                 <div>{wisdom && <p>{wisdom.value >= 1 ? `+${wisdom.value}` : wisdom.value}</p>}</div>
                             </div>
-                            <div>
+                            <div className='abilityScoreBlock'>
                                 <h4>Charisma</h4>
                                 <select onChange={(e) => handleAbilityScoreChange(e, 'charisma')}>
                                     <option value={['', 0]} >Ability Score</option>
@@ -231,32 +231,32 @@ const CharacterBuild = () => {
                     <h4>Points Remaining: {80 - usedPoints}</h4>
                     <h4>{selectedRace && selectedRace.name} {charClass && charClass}</h4>
                     <div className="abilityScoreWrapper">
-                        <div>
+                        <div className='abilityScoreBlock'>
                             <h4>Strength</h4>
                             <p>{strength && strength.score}</p>
                             {<p>{strength.value >= 1 ? `+${strength.value}` : strength.value}</p>}
                         </div>
-                        <div>
+                        <div className='abilityScoreBlock'>
                             <h4>Dexterity</h4>
                             <p>{dexterity && dexterity.score}</p>
                             {<p>{dexterity.value >= 1 ? `+${dexterity.value}` : dexterity.value}</p>}
                         </div>
-                        <div>
+                        <div className='abilityScoreBlock'>
                             <h4>Constitution</h4>
                             <p>{constitution && constitution.score}</p>
                             {<p>{constitution.value >= 1 ? `+${constitution.value}` : constitution.value}</p>}
                         </div>
-                        <div>
+                        <div className='abilityScoreBlock'>
                             <h4>Intelligence</h4>
                             <p>{intelligence && intelligence.score}</p>
                             {<p>{intelligence.value >= 1 ? `+${intelligence.value}` : intelligence.value}</p>}
                         </div>
-                        <div>
+                        <div className='abilityScoreBlock'>
                             <h4>Wisdom</h4>
                             <p>{wisdom && wisdom.score}</p>
                             {<p>{wisdom.value >= 1 ? `+${wisdom.value}` : wisdom.value}</p>}
                         </div>
-                        <div>
+                        <div className='abilityScoreBlock'>
                             <h4>Charisma</h4>
                             <p>{charisma && charisma.score}</p>
                             {<p>{charisma.value >= 1 ? `+${charisma.value}` : charisma.value}</p>}

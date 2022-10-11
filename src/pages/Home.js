@@ -9,7 +9,7 @@ const Home = () => {
         <div>
             <h1>Welcome to AutoDave's Anime 5e Helper App</h1>
             <p>While this is still a work in progress, my hope is that it will prove useful in the future.</p>
-            <ul>
+            <ul className="phaseList">
                 <li>Phase 1: Character Builder. A page to help you play around with the point system as you decide what you want your character to be.</li>
                 <li>Phase 2: Character Profiles. Be able to store character information and access them when you want them from any device.</li>
                 <li>Phase 3: Party Tracker.</li>

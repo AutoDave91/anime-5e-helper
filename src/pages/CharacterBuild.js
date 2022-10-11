@@ -2,13 +2,15 @@ import React, {
     useEffect,
     useState
 } from "react";
+import defaultData from "../defaultData";
 // import { Link } from "react-router-dom";
+const { playableRaces, attributes, defects } = defaultData
 
 //components
 
 const CharacterBuild = () => {
     const [usedPoints, setUsedPoints] = useState(0);
-    const [selectedRace, setSelectedRace] = useState({ 'value': 0 });
+    const [selectedRace, setSelectedRace] = useState({ 'cost': 0 });
     const [strength, setStrength] = useState({ 'value': 0 })
     const [dexterity, setDexterity] = useState({ 'value': 0 })
     const [constitution, setConstitution] = useState({ 'value': 0 })
@@ -24,15 +26,14 @@ const CharacterBuild = () => {
     const [charClass, setCharClass] = useState('')
 
     const absOptions = [['1', -5], ['2', -4], ['3', -4], ['4', -3], ['5', -3], ['6', -2], ['7', -2], ['8', -1], ['9', -1], ['10', 0], ['11', 0], ['12', 1], ['13', 1], ['14', 2], ['15', 2], ['16', 3], ['17', 3], ['18', 4], ['19', 4], ['20', 5], ['21', 5], ['22', 6], ['23', 6], ['24', 7], ['25', 7], ['26', 8], ['27', 8], ['28 ', 9], ['29', 9], ['30', 10]];
-    const raceOptions = [['Archfiend', 15], ['Asrai', 11], ['Blinkbeast', 10], ['Demonaga', 14], ['Dragonborn', 9], ['Dwarf - Hill', 12], ['Dwarf - Mountain', 14], ['Elf - Dark', 13], ['Elf - High', 12], ['Elf - Wood', 11], ['Fairy', 4], ['Gnome - Forest', 4], ['Gnome - Rock', 4], ['Half-Dragon', 13], ['Half-Elf', 10], ['Half-Orc', 8], ['Half-Troll', 9], ['Halfling - Lightfoot', 3], ['Halfling - Stout', 5], ['Haud', 12], ['Human', 7], ['Kodama', 10], ['Parasite', 16], ['Satyr', 7], ['Slime', 11], ['Tiefling', 12]];
-    const attOptions = [['+10', 10], ['+1', 1]];
-    const defectOptions = [['-10', -10]];
 
     const handleRaceChange = (event) => {
         if (event.target.value) {
-            let raceArr = event.target.value.split(",");
-            let raceObj = { 'name': raceArr[0], 'value': +raceArr[1] }
-            setSelectedRace(raceObj)
+            if (event.target.value === ',0') {
+                setSelectedRace({ 'cost': 0 })
+                return
+            }
+            setSelectedRace(playableRaces[event.target.value])
         }
     };
     const handleAbilityScoreChange = (event, ability) => {
@@ -67,10 +68,8 @@ const CharacterBuild = () => {
             if (event.target.value === ',0') {
                 return
             }
-            let attArr = event.target.value.split(",");
-            let attObj = { 'name': attArr[0], 'value': +attArr[1] }
-            setAttList([attObj.name, ...attList])
-            setAttribute(attObj)
+            setAttList([attributes[event.target.value], ...attList])
+            setAttribute(attributes[event.target.value])
         }
     };
     const handleDefectChange = (event) => {
@@ -80,8 +79,8 @@ const CharacterBuild = () => {
             }
             let defectArr = event.target.value.split(",");
             let defectObj = { 'name': defectArr[0], 'value': +defectArr[1] }
-            setDefectList([defectObj.name, ...defectList])
-            setDefect(defectObj)
+            setDefectList([defects[event.target.value], ...defectList])
+            setDefect(defects[event.target.value])
         }
     };
 
@@ -103,17 +102,22 @@ const CharacterBuild = () => {
     // }
 
     useEffect(() => {
+        console.log(selectedRace)
         const totalPoints = () => {
+            let attTotal = 0;
+            let defectTotal = 0;
+            attList.forEach((att) => attTotal += +att.value)
+            defectList.forEach((defect) => defectTotal -= +defect.value)
             let total = (
-                +selectedRace.value +
+                +selectedRace.cost +
                 +strength.value +
                 +dexterity.value +
                 +constitution.value +
                 +intelligence.value +
                 +wisdom.value +
                 +charisma.value +
-                +attribute.value +
-                +defect.value
+                +attTotal +
+                +defectTotal
             )
             setUsedPoints(total)
         }
@@ -124,7 +128,7 @@ const CharacterBuild = () => {
         }
 
         totalPoints();
-    }, [setOverBudget, selectedRace.value, strength.value, dexterity.value, constitution.value, intelligence.value, wisdom.value, charisma.value, usedPoints, attribute.value, defect.value])
+    }, [setOverBudget, selectedRace.cost, strength.value, dexterity.value, constitution.value, intelligence.value, wisdom.value, charisma.value, usedPoints, attribute.value, defect.value])
 
     return (
         <div>
@@ -139,7 +143,7 @@ const CharacterBuild = () => {
                     <h3>Race</h3>
                     <select onChange={handleRaceChange}>
                         <option value={['', 0]} >Select Race</option>
-                        {raceOptions.map((race) => <option value={race} >{race[0]}</option>)}
+                        {playableRaces.map((race, index) => <option value={index} >{race.race}</option>)}
                     </select>
                     <div>
                         <h3>Ability Scores</h3>
@@ -205,21 +209,21 @@ const CharacterBuild = () => {
                                 <h3>Attributes</h3>
                                 <select onChange={handleAttChange}>
                                     <option value={['', 0]} >Attributes</option>
-                                    {attOptions.map((att) => <option value={att} >{att[0]}</option>)}
+                                    {attributes.map((att, index) => <option value={index} >{att.name} - Rank {att.rank}</option>)}
                                 </select>
                                 <ul>
                                     {/* {console.log(attList)} */}
-                                    {attList && attList.map((att) => <li>{att}</li>)}
+                                    {attList && attList.map((att) => <li>{att.name} - Rank {att.rank}</li>)}
                                 </ul>
                             </div>
                             <div>
                                 <h3>Defects</h3>
                                 <select onChange={handleDefectChange}>
                                     <option value={['', 0]} >Defects</option>
-                                    {defectOptions.map((defect) => <option value={defect} >{defect[0]}</option>)}
+                                    {defects.map((defect, index) => <option value={index} >{defect.name} - Rank {defect.rank}</option>)}
                                 </select>
                                 <ul>
-                                    {defectList && defectList.map((defect) => <li>{defect}</li>)}
+                                    {defectList && defectList.map((defect) => <li>{defect.name} - Rank {defect.rank}</li>)}
                                 </ul>
                             </div>
                         </div>
@@ -229,7 +233,7 @@ const CharacterBuild = () => {
                     <h2>Character Preview</h2>
                     <h3>{charName && charName}</h3>
                     <h4>Points Remaining: {80 - usedPoints}</h4>
-                    <h4>{selectedRace && selectedRace.name} {charClass && charClass}</h4>
+                    <h4>{selectedRace && selectedRace.race} {charClass && charClass}</h4>
                     <div className="abilityScoreWrapper">
                         <div className='abilityScoreBlock'>
                             <h4>Strength</h4>

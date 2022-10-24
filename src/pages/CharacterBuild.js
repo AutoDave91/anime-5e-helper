@@ -25,6 +25,7 @@ const CharacterBuild = () => {
     const [charName, setCharName] = useState('')
     const [charClass, setCharClass] = useState('')
     const [abilityScoreMethod, setAbilityScoreMethod] = useState('Player Choice')
+    const [abilitySpent, setAbilitySpent] = useState(0)
 
     const absOptions = [
         // ['1', -5], ['2', -4], ['3', -4], ['4', -3],
@@ -108,6 +109,19 @@ const CharacterBuild = () => {
 
     useEffect(() => {
         console.log(selectedRace)
+        const pointBuy = () => {
+            let total = (
+                +strength.value +
+                +dexterity.value +
+                +constitution.value +
+                +intelligence.value +
+                +wisdom.value +
+                +charisma.value
+            )
+
+            setAbilitySpent(total)
+
+        }
         const totalPoints = () => {
             let attTotal = 0;
             let defectTotal = 0;
@@ -127,7 +141,8 @@ const CharacterBuild = () => {
         }
 
         totalPoints();
-    }, [setOverBudget, selectedRace.cost, usedPoints, attribute.value, defect.value])
+        pointBuy();
+    }, [setOverBudget, selectedRace.cost, usedPoints, attribute.value, defect.value, strength.value, dexterity.value, constitution.value, intelligence.value, wisdom.value, charisma.value])
 
     return (
         <div>
@@ -147,9 +162,9 @@ const CharacterBuild = () => {
                     <div>
                         <h3>Ability Scores</h3>
                         <div>
-                            <button onClick={() => setabilityScoreMethod('Player Choice')}>Player Choice</button>
-                            <button onClick={() => setabilityScoreMethod('Point Buy')}>Point Buy</button>
-                            <button onClick={() => setabilityScoreMethod('Roll Dice')}>Roll Dice</button>
+                            <button onClick={(e) => { e.preventDefault(); setAbilityScoreMethod('Player Choice') }}>Player Choice</button>
+                            <button onClick={(e) => { e.preventDefault(); setAbilityScoreMethod('Point Buy') }}>Point Buy</button>
+                            <button onClick={(e) => { e.preventDefault(); setAbilityScoreMethod('Roll Dice') }}>Roll Dice</button>
                         </div>
                         {abilityScoreMethod === 'Player Choice' && (
                             <div>
@@ -159,6 +174,7 @@ const CharacterBuild = () => {
                         {abilityScoreMethod === 'Point Buy' && (
                             <div>
                                 <p>{abilityScoreMethod}</p>
+                                <p>Point Buy: {`${abilitySpent}/__`}</p>
                                 <div className="abilityScoreWrapper">
                                     <div className='abilityScoreBlock'>
                                         <h4>Strength</h4>

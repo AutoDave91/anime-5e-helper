@@ -24,8 +24,13 @@ const CharacterBuild = () => {
     const [defectList, setDefectList] = useState([])
     const [charName, setCharName] = useState('')
     const [charClass, setCharClass] = useState('')
+    const [abilityScoreMethod, setAbilityScoreMethod] = useState('Player Choice')
 
-    const absOptions = [['1', -5], ['2', -4], ['3', -4], ['4', -3], ['5', -3], ['6', -2], ['7', -2], ['8', -1], ['9', -1], ['10', 0], ['11', 0], ['12', 1], ['13', 1], ['14', 2], ['15', 2], ['16', 3], ['17', 3], ['18', 4], ['19', 4], ['20', 5], ['21', 5], ['22', 6], ['23', 6], ['24', 7], ['25', 7], ['26', 8], ['27', 8], ['28 ', 9], ['29', 9], ['30', 10]];
+    const absOptions = [
+        // ['1', -5], ['2', -4], ['3', -4], ['4', -3],
+        ['5', -3], ['6', -2], ['7', -2], ['8', -1], ['9', -1], ['10', 0], ['11', 0], ['12', 1], ['13', 1], ['14', 2], ['15', 2], ['16', 3], ['17', 3], ['18', 4]
+        // , ['19', 4], ['20', 5], ['21', 5], ['22', 6], ['23', 6], ['24', 7], ['25', 7], ['26', 8], ['27', 8], ['28 ', 9], ['29', 9], ['30', 10]
+    ];
 
     const handleRaceChange = (event) => {
         if (event.target.value) {
@@ -110,12 +115,6 @@ const CharacterBuild = () => {
             defectList.forEach((defect) => defectTotal -= +defect.value)
             let total = (
                 +selectedRace.cost +
-                +strength.value +
-                +dexterity.value +
-                +constitution.value +
-                +intelligence.value +
-                +wisdom.value +
-                +charisma.value +
                 +attTotal +
                 +defectTotal
             )
@@ -128,7 +127,7 @@ const CharacterBuild = () => {
         }
 
         totalPoints();
-    }, [setOverBudget, selectedRace.cost, strength.value, dexterity.value, constitution.value, intelligence.value, wisdom.value, charisma.value, usedPoints, attribute.value, defect.value])
+    }, [setOverBudget, selectedRace.cost, usedPoints, attribute.value, defect.value])
 
     return (
         <div>
@@ -147,63 +146,82 @@ const CharacterBuild = () => {
                     </select>
                     <div>
                         <h3>Ability Scores</h3>
-                        <p>{`(point buy)`}</p>
-                        <div className="abilityScoreWrapper">
-                            <div className='abilityScoreBlock'>
-                                <h4>Strength</h4>
-                                <select onChange={(e) => handleAbilityScoreChange(e, 'strength')}>
-                                    <option value={['', 0]} >Ability Score</option>
-                                    {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
-
-                                </select>
-                                <div>{strength && <p>{strength.value >= 1 ? `+${strength.value}` : strength.value}</p>}</div>
-                            </div>
-                            <div className='abilityScoreBlock'>
-                                <h4>Dexterity</h4>
-                                <select onChange={(e) => handleAbilityScoreChange(e, 'dexterity')}>
-                                    <option value={['', 0]} >Ability Score</option>
-                                    {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
-
-                                </select>
-                                <div>{dexterity && <p>{dexterity.value >= 1 ? `+${dexterity.value}` : dexterity.value}</p>}</div>
-                            </div>
-                            <div className='abilityScoreBlock'>
-                                <h4>Constitution</h4>
-                                <select onChange={(e) => handleAbilityScoreChange(e, 'constitution')}>
-                                    <option value={['', 0]} >Ability Score</option>
-                                    {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
-
-                                </select>
-                                <div>{constitution && <p>{constitution.value >= 1 ? `+${constitution.value}` : constitution.value}</p>}</div>
-                            </div>
-                            <div className='abilityScoreBlock'>
-                                <h4>Intelligence</h4>
-                                <select onChange={(e) => handleAbilityScoreChange(e, 'intelligence')}>
-                                    <option value={['', 0]} >Ability Score</option>
-                                    {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
-
-                                </select>
-                                <div>{intelligence && <p>{intelligence.value >= 1 ? `+${intelligence.value}` : intelligence.value}</p>}</div>
-                            </div>
-                            <div className='abilityScoreBlock'>
-                                <h4>Wisdom</h4>
-                                <select onChange={(e) => handleAbilityScoreChange(e, 'wisdom')}>
-                                    <option value={['', 0]} >Ability Score</option>
-                                    {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
-
-                                </select>
-                                <div>{wisdom && <p>{wisdom.value >= 1 ? `+${wisdom.value}` : wisdom.value}</p>}</div>
-                            </div>
-                            <div className='abilityScoreBlock'>
-                                <h4>Charisma</h4>
-                                <select onChange={(e) => handleAbilityScoreChange(e, 'charisma')}>
-                                    <option value={['', 0]} >Ability Score</option>
-                                    {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
-
-                                </select>
-                                <div>{charisma && <p>{charisma.value >= 1 ? `+${charisma.value}` : charisma.value}</p>}</div>
-                            </div>
+                        <div>
+                            <button onClick={() => setabilityScoreMethod('Player Choice')}>Player Choice</button>
+                            <button onClick={() => setabilityScoreMethod('Point Buy')}>Point Buy</button>
+                            <button onClick={() => setabilityScoreMethod('Roll Dice')}>Roll Dice</button>
                         </div>
+                        {abilityScoreMethod === 'Player Choice' && (
+                            <div>
+                                <p>{abilityScoreMethod}</p>
+                            </div>
+                        )}
+                        {abilityScoreMethod === 'Point Buy' && (
+                            <div>
+                                <p>{abilityScoreMethod}</p>
+                                <div className="abilityScoreWrapper">
+                                    <div className='abilityScoreBlock'>
+                                        <h4>Strength</h4>
+                                        <select onChange={(e) => handleAbilityScoreChange(e, 'strength')}>
+                                            <option value={['', 0]} >Ability Score</option>
+                                            {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
+
+                                        </select>
+                                        <div>{strength && <p>{strength.value >= 1 ? `+${strength.value}` : strength.value}</p>}</div>
+                                    </div>
+                                    <div className='abilityScoreBlock'>
+                                        <h4>Dexterity</h4>
+                                        <select onChange={(e) => handleAbilityScoreChange(e, 'dexterity')}>
+                                            <option value={['', 0]} >Ability Score</option>
+                                            {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
+
+                                        </select>
+                                        <div>{dexterity && <p>{dexterity.value >= 1 ? `+${dexterity.value}` : dexterity.value}</p>}</div>
+                                    </div>
+                                    <div className='abilityScoreBlock'>
+                                        <h4>Constitution</h4>
+                                        <select onChange={(e) => handleAbilityScoreChange(e, 'constitution')}>
+                                            <option value={['', 0]} >Ability Score</option>
+                                            {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
+
+                                        </select>
+                                        <div>{constitution && <p>{constitution.value >= 1 ? `+${constitution.value}` : constitution.value}</p>}</div>
+                                    </div>
+                                    <div className='abilityScoreBlock'>
+                                        <h4>Intelligence</h4>
+                                        <select onChange={(e) => handleAbilityScoreChange(e, 'intelligence')}>
+                                            <option value={['', 0]} >Ability Score</option>
+                                            {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
+
+                                        </select>
+                                        <div>{intelligence && <p>{intelligence.value >= 1 ? `+${intelligence.value}` : intelligence.value}</p>}</div>
+                                    </div>
+                                    <div className='abilityScoreBlock'>
+                                        <h4>Wisdom</h4>
+                                        <select onChange={(e) => handleAbilityScoreChange(e, 'wisdom')}>
+                                            <option value={['', 0]} >Ability Score</option>
+                                            {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
+
+                                        </select>
+                                        <div>{wisdom && <p>{wisdom.value >= 1 ? `+${wisdom.value}` : wisdom.value}</p>}</div>
+                                    </div>
+                                    <div className='abilityScoreBlock'>
+                                        <h4>Charisma</h4>
+                                        <select onChange={(e) => handleAbilityScoreChange(e, 'charisma')}>
+                                            <option value={['', 0]} >Ability Score</option>
+                                            {absOptions.map((abs) => <option value={abs} >{abs[0]}</option>)}
+
+                                        </select>
+                                        <div>{charisma && <p>{charisma.value >= 1 ? `+${charisma.value}` : charisma.value}</p>}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                        {abilityScoreMethod === 'Roll Dice' && (
+                            <div>
+                                <p>{abilityScoreMethod}</p>
+                            </div>
+                        )}
                         <div className="abilityScoreWrapper">
                             <div>
                                 <h3>Attributes</h3>

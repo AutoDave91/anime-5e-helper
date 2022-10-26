@@ -73,3 +73,16 @@ a {
   /* color: white; */
   padding: 15px 100px 15px 50px;
 }
+
+.raceInfoWrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 800px;
+  margin: 50px auto 20px auto;
+  border-radius: 20px;
+}
+
+.raceInfo {
+  display: grid;
+  grid-template-columns: 1fr .25fr;
+}

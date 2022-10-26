@@ -65,6 +65,15 @@ const CharacterBuild = () => {
             }
         }
     };
+    const resetABS = () => {
+        setStrength({ 'score': 0, 'value': 0 });
+        setDexterity({ 'score': 0, 'value': 0 });
+        setConstitution({ 'score': 0, 'value': 0 });
+        setIntelligence({ 'score': 0, 'value': 0 });
+        setWisdom({ 'score': 0, 'value': 0 });
+        setCharisma({ 'score': 0, 'value': 0 });
+        setAvailableScores([['8', -1], ['10', 0], ['12', 1], ['13', 1], ['14', 2], ['15', 2]]);
+    }
     const handleAbilityChoice = (event, ability) => {
         if (event.target.value) {
             let abilityArr = [];
@@ -195,10 +204,10 @@ const CharacterBuild = () => {
                     </select>
                     <div>
                         <h3>Ability Scores</h3>
-                        <div>
-                            <button onClick={(e) => { e.preventDefault(); setAbilityScoreMethod('Player Choice') }}>Player Choice</button>
-                            <button onClick={(e) => { e.preventDefault(); setAbilityScoreMethod('Fixed Numbers') }}>Fixed Numbers</button>
-                            <button onClick={(e) => { e.preventDefault(); setAbilityScoreMethod('Roll Dice') }}>Roll Dice</button>
+                        <div className="absButtonGroup">
+                            <button onClick={(e) => { e.preventDefault(); setAbilityScoreMethod('Player Choice'); resetABS() }}>Player Choice</button>
+                            <button onClick={(e) => { e.preventDefault(); setAbilityScoreMethod('Fixed Numbers'); resetABS() }}>Fixed Numbers</button>
+                            <button onClick={(e) => { e.preventDefault(); setAbilityScoreMethod('Roll Dice'); resetABS() }}>Roll Dice</button>
                         </div>
                         {abilityScoreMethod === 'Fixed Numbers' && (
                             <div>
@@ -406,6 +415,19 @@ const CharacterBuild = () => {
                                 {<p>{charisma.value >= 1 ? `+${charisma.value}` : charisma.value}</p>}
                             </div>
                         </div>
+                        {selectedRace &&
+                            <div className="raceInfoWrapper">
+                                {selectedRace.race_mods && <div>
+                                    <div className='raceInfo'><h4>Attribute/Defect</h4><h4>Points</h4></div>
+                                    <ul>
+                                        {selectedRace.race_mods.map((race) => (
+                                            <li className='raceInfo'><p>{race.name}</p><p>{race.modifier}</p></li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                }
+                            </div>
+                        }
                     </div>
                 }
             </div >

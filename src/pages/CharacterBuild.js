@@ -3,6 +3,7 @@ import React, {
     useState
 } from "react";
 import defaultData from "../defaultData";
+import { $ } from 'jquery';
 // import { Link } from "react-router-dom";
 const { playableRaces, attributes, defects } = defaultData
 
@@ -25,7 +26,6 @@ const CharacterBuild = () => {
     const [charName, setCharName] = useState('')
     const [charClass, setCharClass] = useState('')
     const [abilityScoreMethod, setAbilityScoreMethod] = useState('Player Choice')
-    const [abilitySpent, setAbilitySpent] = useState(0)
     const [availableScores, setAvailableScores] = useState([['8', -1], ['10', 0], ['12', 1], ['13', 1], ['14', 2], ['15', 2]])
 
     const absOptions = [
@@ -68,33 +68,47 @@ const CharacterBuild = () => {
     };
     const handleAbilityChoice = (event, ability) => {
         if (event.target.value) {
-            let newArr = []
+            let originalArr = [['8', -1], ['10', 0], ['12', 1], ['13', 1], ['14', 2], ['15', 2]];
+            let newArr = [];
+            let abilityArr = [];
             let abilityScoreArr = event.target.value.split(",");
             let abilityScoreObj = { 'score': abilityScoreArr[0], 'value': +abilityScoreArr[1] }
 
-            availableScores.forEach((score) => { if (score[0] !== abilityScoreObj.score) { newArr.push(score); console.log(score) } })
+            availableScores.forEach((score) => { if (score[0] !== abilityScoreObj.score) { abilityArr.push(score) } })
+            console.log(abilityArr)
 
-            setAvailableScores(newArr)
+            var elements = document.getElementsByTagName('select');
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].selectedIndex = 0;
+            }
             console.log(availableScores)
 
             if (ability === 'strength') {
+                console.log(strength.score === 0)
+                if (strength.score !== 0) { abilityArr.push([strength.score, strength.value]) }
                 setStrength(abilityScoreObj)
             }
             if (ability === 'dexterity') {
+                if (dexterity.score !== 0) { abilityArr.push([dexterity.score, dexterity.value]) }
                 setDexterity(abilityScoreObj)
             }
             if (ability === 'constitution') {
+                if (constitution.score !== 0) { abilityArr.push([constitution.score, constitution.value]) }
                 setConstitution(abilityScoreObj)
             }
             if (ability === 'intelligence') {
+                if (intelligence.score !== 0) { abilityArr.push([intelligence.score, intelligence.value]) }
                 setIntelligence(abilityScoreObj)
             }
             if (ability === 'wisdom') {
+                if (wisdom.score !== 0) { abilityArr.push([wisdom.score, wisdom.value]) }
                 setWisdom(abilityScoreObj)
             }
             if (ability === 'charisma') {
+                if (charisma.score !== 0) { abilityArr.push([charisma.score, charisma.value]) }
                 setCharisma(abilityScoreObj)
             }
+            setAvailableScores(abilityArr)
         }
     };
 
@@ -197,53 +211,65 @@ const CharacterBuild = () => {
                                         <h4>Strength</h4>
                                         <select onChange={(e) => handleAbilityChoice(e, 'strength')}>
                                             <option value={['', 0]} >Ability Score</option>
-                                            {availableScores.map((abs) => <option value={abs} >{abs[0]}</option>)}
+                                            {strength.score !== 0 && <option value={['0', 0]} >Reset Score</option>}
+                                            {availableScores.map((abs) => <option className="fixedOption" value={abs} >{abs[0]}</option>)}
                                         </select>
+                                        <p>{strength && strength.score}</p>
                                         <div>{strength && <p>{strength.value >= 1 ? `+${strength.value}` : strength.value}</p>}</div>
                                     </div>
                                     <div className='abilityScoreBlock'>
                                         <h4>Dexterity</h4>
                                         <select onChange={(e) => handleAbilityChoice(e, 'dexterity')}>
                                             <option value={['', 0]} >Ability Score</option>
-                                            {availableScores.map((abs) => <option value={abs} >{abs[0]}</option>)}
+                                            {dexterity.score !== 0 && <option value={['0', 0]} >Reset Score</option>}
+                                            {availableScores.map((abs) => <option className="fixedOption" value={abs} >{abs[0]}</option>)}
 
                                         </select>
+                                        <p>{dexterity && dexterity.score}</p>
                                         <div>{dexterity && <p>{dexterity.value >= 1 ? `+${dexterity.value}` : dexterity.value}</p>}</div>
                                     </div>
                                     <div className='abilityScoreBlock'>
                                         <h4>Constitution</h4>
                                         <select onChange={(e) => handleAbilityChoice(e, 'constitution')}>
                                             <option value={['', 0]} >Ability Score</option>
-                                            {availableScores.map((abs) => <option value={abs} >{abs[0]}</option>)}
+                                            {constitution.score !== 0 && <option value={['0', 0]} >Reset Score</option>}
+                                            {availableScores.map((abs) => <option className="fixedOption" value={abs} >{abs[0]}</option>)}
 
                                         </select>
+                                        <p>{constitution && constitution.score}</p>
                                         <div>{constitution && <p>{constitution.value >= 1 ? `+${constitution.value}` : constitution.value}</p>}</div>
                                     </div>
                                     <div className='abilityScoreBlock'>
                                         <h4>Intelligence</h4>
                                         <select onChange={(e) => handleAbilityChoice(e, 'intelligence')}>
                                             <option value={['', 0]} >Ability Score</option>
-                                            {availableScores.map((abs) => <option value={abs} >{abs[0]}</option>)}
+                                            {intelligence.score !== 0 && <option value={['0', 0]} >Reset Score</option>}
+                                            {availableScores.map((abs) => <option className="fixedOption" value={abs} >{abs[0]}</option>)}
 
                                         </select>
+                                        <p>{intelligence && intelligence.score}</p>
                                         <div>{intelligence && <p>{intelligence.value >= 1 ? `+${intelligence.value}` : intelligence.value}</p>}</div>
                                     </div>
                                     <div className='abilityScoreBlock'>
                                         <h4>Wisdom</h4>
                                         <select onChange={(e) => handleAbilityChoice(e, 'wisdom')}>
                                             <option value={['', 0]} >Ability Score</option>
-                                            {availableScores.map((abs) => <option value={abs} >{abs[0]}</option>)}
+                                            {wisdom.score !== 0 && <option value={['0', 0]} >Reset Score</option>}
+                                            {availableScores.map((abs) => <option className="fixedOption" value={abs} >{abs[0]}</option>)}
 
                                         </select>
+                                        <p>{wisdom && wisdom.score}</p>
                                         <div>{wisdom && <p>{wisdom.value >= 1 ? `+${wisdom.value}` : wisdom.value}</p>}</div>
                                     </div>
                                     <div className='abilityScoreBlock'>
                                         <h4>Charisma</h4>
                                         <select onChange={(e) => handleAbilityChoice(e, 'charisma')}>
                                             <option value={['', 0]} >Ability Score</option>
-                                            {availableScores.map((abs) => <option value={abs} >{abs[0]}</option>)}
+                                            {charisma.score !== 0 && <option value={['0', 0]} >Reset Score</option>}
+                                            {availableScores.map((abs) => <option className="fixedOption" value={abs} >{abs[0]}</option>)}
 
                                         </select>
+                                        <p>{charisma && charisma.score}</p>
                                         <div>{charisma && <p>{charisma.value >= 1 ? `+${charisma.value}` : charisma.value}</p>}</div>
                                     </div>
                                 </div>

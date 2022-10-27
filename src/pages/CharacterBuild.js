@@ -417,8 +417,12 @@ const CharacterBuild = () => {
                         </div>
                         {selectedRace.image &&
                             <div className="raceInfoWrapper">
-                                {selectedRace.image.name !== '' && <img className='defaultRaceImage' src={require(`../assets/${selectedRace.image.name}`)} alt={selectedRace.image.alt} />}
-                                {selectedRace.race_mods && <div>
+                                <div className='defaultRaceWrapper' >
+                                    <h3>{selectedRace.race}</h3>
+                                    {selectedRace.image.name !== '' &&
+                                        <img className='defaultRaceImage' src={require(`../assets/${selectedRace.image.name}`)} alt={selectedRace.image.alt} />}
+                                </div>
+                                {selectedRace.race_mods && <div className="raceInfoBlock">
                                     <div className='raceInfo'>
                                         <h4>Attribute/Defect</h4>
                                         <h4>Points</h4>

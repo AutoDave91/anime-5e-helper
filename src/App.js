@@ -29,6 +29,15 @@ function App() {
               element={<Home />}
             />
             <Route
+              path="/character-builder"
+              element={<CharacterBuild />}
+            />
+            <Route
+              path='/art-pack'
+              element={<Legal />}
+            />
+            {/* old routes */}
+            <Route
               path="/build-character"
               element={<CharacterBuild />}
             />

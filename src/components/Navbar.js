@@ -8,8 +8,9 @@ const Navbar = () => {
                 <h1>Anime 5e Helper</h1>
             </Link>
             <nav className="nav-menu-container">
-                <Link to="/build-character">Build New Character</Link>
-                <Link to='/legal'>Art Assets</Link>
+                <Link to="/character-builder">Build New Character</Link>
+                <Link to='/art-pack'>Art Assets</Link>
+                {/* <Link to='/character-bank'>View Characters</Link> */}
             </nav>
         </header>
     );

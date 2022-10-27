@@ -1,9 +1,74 @@
 const defaultData = {
+    'credit': [
+        { 'location': 'Anime5E_adventurer-min.png', 'name': 'Anime5E_adventurer.png – Niko Geyer' },
+        { 'location': 'Anime5E_archfiend-min.png', 'name': 'Anime5E_archfiend.png – Niko Geyer' },
+        { 'location': 'Anime5E_asrai-min.png', 'name': 'Anime5E_asrai.png – Chabibit' },
+        { 'location': 'Anime5E_bard-min.png', 'name': 'Anime5E_bard.png – Michelle Tan' },
+        { 'location': 'Anime5E_bender-min.png', 'name': 'Anime5E_bender.png – Niko Geyer' },
+        { 'location': 'Anime5E_blinkbeast-min.png', 'name': 'Anime5E_blinkbeast.png – Chabibit' },
+        { 'location': 'Anime5E_broker-min.png', 'name': 'Anime5E_broker.png – Chabibit' },
+        { 'location': 'Anime5E_bugbear-min.png', 'name': 'Anime5E_bugbear.png – Michelle Tan' },
+        { 'location': 'Anime5E_crogoblin-min.png', 'name': 'Anime5E_crogoblin.png – Ariel Tan' },
+        { 'location': 'Anime5E_dark_elf_dragon-min.png', 'name': 'Anime5E_dark_elf_dragon.png – Niko Geyer' },
+        { 'location': 'Anime5E_dark_elf-min.png', 'name': 'Anime5E_dark_elf.png – Niko Geyer' },
+        { 'location': 'Anime5E_demon_hunter-min.png', 'name': 'Anime5E_demon_hunter.png – Niko Geyer' },
+        { 'location': 'Anime5E_demonaga-min.png', 'name': 'Anime5E_demonaga.png – Chabibit' },
+        { 'location': 'Anime5E_dwarf-min.png', 'name': 'Anime5E_dwarf.png – Niko Geyer' },
+        { 'location': 'Anime5E_dynamic_spellbinder-min.png', 'name': 'Anime5E_dynamic_spellbinder.png – Niko Geyer' },
+        { 'location': 'Anime5E_elementalist-min.png', 'name': 'Anime5E_elementalist.png – Niko Geyer' },
+        { 'location': 'Anime5E_exorcist-min.png', 'name': 'Anime5E_exorcist.png – Niko Geyer' },
+        { 'location': 'Anime5E_fairy-min.png', 'name': 'Anime5E_fairy.png – Niko Geyer' },
+        { 'location': 'Anime5E_fire_warrior-min.png', 'name': 'Anime5E_fire_warrior.png – Ariel Tan' },
+        { 'location': 'Anime5E_goblin_archer-min.png', 'name': 'Anime5E_goblin_archer.png – Desti' },
+        { 'location': 'Anime5E_goblin_poisoned-min.png', 'name': 'Anime5E_goblin_poisoned.png – Michelle Tan' },
+        { 'location': 'Anime5E_grey-min.png', 'name': 'Anime5E_grey.png – Niko Geyer' },
+        { 'location': 'Anime5E_half-dragon-min.png', 'name': 'Anime5E_half-dragon.png – Niko Geyer' },
+        { 'location': 'Anime5E_half-orc-min.png', 'name': 'Anime5E_half-orc.png – Strike Boogie' },
+        { 'location': 'Anime5E_half-troll-min.png', 'name': 'Anime5E_half-troll.png – Niko Geyer' },
+        { 'location': 'Anime5E_halfling-min.png', 'name': 'Anime5E_halfling.png – Niko Geyer' },
+        { 'location': 'Anime5E_haud-min.png', 'name': 'Anime5E_haud.png – Strike Boogie' },
+        { 'location': 'Anime5E_hell_hound-min.png', 'name': 'Anime5E_hell_hound.png – Michelle Tan' },
+        { 'location': 'Anime5E_hunter-min.png', 'name': 'Anime5E_hunter.png – Niko Geyer' },
+        { 'location': 'Anime5E_kobold-min.png', 'name': 'Anime5E_kobold.png – Niko Geyer' },
+        { 'location': 'Anime5E_kodama-min.png', 'name': 'Anime5E_kodama.png – Chabibit' },
+        { 'location': 'Anime5E_loralai-min.png', 'name': 'Anime5E_loralai.png – Ariel Tan' },
+        { 'location': 'Anime5E_magical_girl-min.png', 'name': 'Anime5E_magical_girl.png – Strike Boogie' },
+        { 'location': 'Anime5E_martial_artist-min.png', 'name': 'Anime5E_martial_artist.png – Niko Geyer' },
+        { 'location': 'Anime5E_mentalist-min.png', 'name': 'Anime5E_mentalist.png – Michelle Tan' },
+        { 'location': 'Anime5E_mindmancer-min.png', 'name': 'Anime5E_mindmancer.png – Strike Boogie' },
+        { 'location': 'Anime5E_nekojin-min.png', 'name': 'Anime5E_nekojin.png – Niko Geyer' },
+        { 'location': 'Anime5E_ninja-min.png', 'name': 'Anime5E_ninja.png – Niko Geyer' },
+        { 'location': 'Anime5E_orc-min.png', 'name': 'Anime5E_orc.png – Michelle Tan' },
+        { 'location': 'Anime5E_parasite-min.png', 'name': 'Anime5E_parasite.png – Chabibit' },
+        { 'location': 'Anime5E_pet_monster_trainer_boy-min.png', 'name': 'Anime5E_pet_monster_trainer_boy.png – Niko Geyer' },
+        { 'location': 'Anime5E_pet_monster_trainer_girl-min.png', 'name': 'Anime5E_pet_monster_trainer_girl.png – Ariel Tan' },
+        { 'location': 'Anime5E_pirate-min.png', 'name': 'Anime5E_pirate.png – Desti' },
+        { 'location': 'Anime5E_psionicist_child-min.png', 'name': 'Anime5E_psionicist_child.png – Ariel Tan' },
+        { 'location': 'Anime5E_psionicist-min.png', 'name': 'Anime5E_psionicist.png – Niko Geyer' },
+        { 'location': 'Anime5E_ritualist-min.png', 'name': 'Anime5E_ritualist.png – Niko Geyer' },
+        { 'location': 'Anime5E_samurai-min.png', 'name': 'Anime5E_samurai.png – Niko Geyer' },
+        { 'location': 'Anime5E_satyr-min.png', 'name': 'Anime5E_satyr.png – Niko Geyer' },
+        { 'location': 'Anime5E_shadow_warrior-min.png', 'name': 'Anime5E_shadow_warrior.png – Niko Geyer' },
+        { 'location': 'Anime5E_shaman-min.png', 'name': 'Anime5E_shaman.png – Niko Geyer' },
+        { 'location': 'Anime5E_shapechanger-min.png', 'name': 'Anime5E_shapechanger.png – Strike Boogie' },
+        { 'location': 'Anime5E_simulake-min.png', 'name': 'Anime5E_simulake.png – Niko Geyer' },
+        { 'location': 'Anime5E_slime-min.png', 'name': 'Anime5E_slime.png – Niko Geyer' },
+        // { 'location': 'Anime5E_snow_maiden-min.png', 'name': 'Anime5E_snow_maiden.png – Strike Boogie' },
+        { 'location': 'Anime5E_stone_giant-min.png', 'name': 'Anime5E_stone_giant.png – Michelle Tan' },
+        { 'location': 'Anime5E_student-min.png', 'name': 'Anime5E_student.png – Niko Geyer' },
+        { 'location': 'Anime5E_succubus-min.png', 'name': 'Anime5E_succubus.png – Destiny’s' },
+        { 'location': 'Anime5E_techknight-min.png', 'name': 'Anime5E_techknight.png – Niko Geyer' },
+        { 'location': 'Anime5E_troll-min.png', 'name': 'Anime5E_troll.png – Michelle Tan' },
+        { 'location': 'Anime5E_warder-min.png', 'name': 'Anime5E_warder.png – Chabibit' },
+        { 'location': 'Anime5E_wizard-min.png', 'name': 'Anime5E_wizard.png – Niko Geyer' },
+        { 'location': 'Anime5E_woolie-min.png', 'name': 'Anime5E_woolie.png – Strike Boogie' },
+        { 'location': 'Anime5E_wyvern-min.png', 'name': 'Anime5E_wyvern.png – Michelle Tan' }
+    ],
     "playableRaces": [
         {
             "race": 'Archfiend',
             'cost': 15,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_archfiend-min.png', 'alt': 'Anime5E_archfiend.png – Niko Geyer' },
             'race_mods': [
                 { 'name': 'Augmented (Strength)', 'modifier': 4 },
                 { 'name': 'Conversion (1 Point per 10 damage)', 'modifier': 5 },
@@ -26,7 +91,7 @@ const defaultData = {
         {
             "race": 'Asrai',
             'cost': 11,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_asrai-min.png', 'alt': 'Anime5E_asrai.png – Chabibit' },
             'race_mods': [
                 { 'name': 'Dexterity +', 'modifier': 1 },
                 { 'name': 'Intelligence +', 'modifier': 1 },
@@ -40,7 +105,7 @@ const defaultData = {
         {
             "race": 'Blinkbeast',
             'cost': 10,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_blinkbeast-min.png', 'alt': 'Anime5E_blinkbeast.png – Chabibit' },
             'race_mods': [
                 { 'name': 'Alternate Identify (Human Form)', 'modifier': 1 },
                 { 'name': 'Dynamic Powers – Lesser (Vegetation; Area: 30’ -2; Concentration +1; Unpredictable +1)', 'modifier': 5 },
@@ -53,7 +118,7 @@ const defaultData = {
         {
             "race": 'Demonaga',
             'cost': 14,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_demonaga-min.png', 'alt': 'Anime5E_demonaga.png – Chabibit' },
             'race_mods': [
                 { 'name': 'Edge (Saving Throws vs. magic)', 'modifier': 2 },
                 { 'name': 'Edge (Strength dice rolls)', 'modifier': 4 },
@@ -73,7 +138,7 @@ const defaultData = {
         {
             "race": 'Dragonborn',
             'cost': 9,
-            'img': '../assets/',
+            'image': { 'name': '', 'alt': '' },
             'race_mods': [
                 { 'name': 'Strength +', 'modifier': 2 },
                 { 'name': 'Charisma +', 'modifier': 1 },
@@ -86,7 +151,7 @@ const defaultData = {
         {
             "race": 'Dwarf - Hill',
             'cost': 12,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_dwarf-min.png', 'alt': 'Anime5E_dwarf.png – Niko Geyer' },
             'race_mods': [
                 { 'name': 'Constitution +', 'modifier': 2 },
                 { 'name': 'Speed: 25’ (in Heavy Armour, too)', 'modifier': 0 },
@@ -104,7 +169,7 @@ const defaultData = {
         {
             "race": 'Dwarf - Mountain',
             'cost': 14,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_dwarf-min.png', 'alt': 'Anime5E_dwarf.png – Niko Geyer' },
             'race_mods': [
                 { 'name': 'Constitution +', 'modifier': 2 },
                 { 'name': 'Speed: 25’ (in Heavy Armour, too)', 'modifier': 0 },
@@ -122,7 +187,7 @@ const defaultData = {
         {
             "race": 'Elf - Dark',
             'cost': 13,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_dark_elf-min.png', 'alt': 'Anime5E_dark_elf.png – Niko Geyer' },
             'race_mods': [
                 { 'name': 'Dexterity +', 'modifier': 2 },
                 { 'name': 'Speed: 30’', 'modifier': 0 },
@@ -142,7 +207,7 @@ const defaultData = {
         {
             "race": 'Elf - High',
             'cost': 12,
-            'img': '../assets/',
+            'image': { 'name': '', 'alt': '' },
             'race_mods': [
                 { 'name': 'Dexterity +', 'modifier': 2 },
                 { 'name': 'Speed: 30’', 'modifier': 0 },
@@ -161,7 +226,7 @@ const defaultData = {
         {
             "race": 'Elf - Wood',
             'cost': 11,
-            'img': '../assets/',
+            'image': { 'name': '', 'alt': '' },
             'race_mods': [
                 { 'name': 'Dexterity +', 'modifier': 2 },
                 { 'name': 'Speed: 35’', 'modifier': 0 },
@@ -179,7 +244,7 @@ const defaultData = {
         {
             "race": 'Fairy',
             'cost': 4,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_fairy-min.png', 'alt': 'Anime5E_fairy.png – Niko Geyer' },
             'race_mods': [
                 { 'name': 'Wisdom +', 'modifier': 1 },
                 { 'name': 'Charisma +', 'modifier': 2 },
@@ -203,7 +268,7 @@ const defaultData = {
         {
             "race": 'Gnome - Forest',
             'cost': 4,
-            'img': '../assets/',
+            'image': { 'name': '', 'alt': '' },
             'race_mods': [
                 { 'name': 'Small Size', 'modifier': -5 },
                 { 'name': 'Intelligence +', 'modifier': 2 },
@@ -219,7 +284,7 @@ const defaultData = {
         {
             "race": 'Gnome - Rock',
             'cost': 4,
-            'img': '../assets/',
+            'image': { 'name': '', 'alt': '' },
             'race_mods': [
                 { 'name': 'Small Size', 'modifier': -5 },
                 { 'name': 'Intelligence +', 'modifier': 2 },
@@ -235,7 +300,7 @@ const defaultData = {
         {
             "race": 'Grey',
             'cost': 12,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_grey-min.png', 'alt': 'Anime5E_grey.png – Niko Geyer' },
             'race_mods': [
                 { 'name': 'Intelligence +', 'modifier': 2 },
                 { 'name': 'Features (Ambidexterity, Darkvision 60’, Ultrasonic Communication)', 'modifier': 3 },
@@ -247,7 +312,7 @@ const defaultData = {
         {
             "race": 'Half-Dragon',
             'cost': 13,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_half-dragon-min.png', 'alt': 'Anime5E_half-dragon.png – Niko Geyer' },
             'race_mods': [
                 { 'name': 'Strength +', 'modifier': 1 },
                 { 'name': 'ConsHtuHon +', 'modifier': 1 },
@@ -260,19 +325,19 @@ const defaultData = {
         {
             "race": 'Half-Elf',
             'cost': 10,
-            'img': '../assets/',
+            'image': { 'name': '', 'alt': '' },
             'race_mods': [{ 'name': '', 'modifier': 0 }]
         },
         {
             "race": 'Half-Orc',
             'cost': 8,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_half-orc-min.png', 'alt': 'Anime5E_half-orc.png – Strike Boogie' },
             'race_mods': [{ 'name': '', 'modifier': 0 }],
         },
         {
             "race": 'Half-Troll',
             'cost': 9,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_half-troll-min.png', 'alt': 'Anime5E_half-troll.png – Niko Geyer' },
             'race_mods': [
                 { 'name': 'Wisdom +', 'modifier': 1 },
                 { 'name': 'Features (Darkvision 60’)', 'modifier': 1 },
@@ -285,19 +350,19 @@ const defaultData = {
         {
             "race": 'Halfling - Lightfoot',
             'cost': 3,
-            'img': '../assets/',
+            'image': { 'name': '', 'alt': '' },
             'race_mods': [{ 'name': '', 'modifier': 0 }],
         },
         {
             "race": 'Halfling - Stout',
             'cost': 5,
-            'img': '../assets/',
+            'image': { 'name': '', 'alt': '' },
             'race_mods': [{ 'name': '', 'modifier': 0 }],
         },
         {
             "race": 'Haud',
             'cost': 12,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_haud-min.png', 'alt': 'Anime5E_haud.png – Strike Boogie' },
             'race_mods': [
                 { 'name': 'Intelligence +', 'modifier': 1 },
                 { 'name': 'Edge (IniHaHve)', 'modifier': 2 },
@@ -315,13 +380,13 @@ const defaultData = {
         {
             "race": 'Human',
             'cost': 7,
-            'img': '../assets/',
+            'image': { 'name': '', 'alt': '' },
             'race_mods': [{ 'name': '', 'modifier': 0 }],
         },
         {
             "race": 'Kodama',
             'cost': 10,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_kodama-min.png', 'alt': 'Anime5E_kodama.png – Chabibit' },
             'race_mods': [
                 { 'name': 'Wisdom +', 'modifier': 1 },
                 { 'name': 'AC Bonus', 'modifier': 4 },
@@ -343,7 +408,7 @@ const defaultData = {
         {
             "race": 'Nekojin',
             'cost': 8,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_nekojin-min.png', 'alt': 'Anime5E_nekojin.png – Niko Geyer' },
             'race_mods': [
                 { 'name': 'Dexterity +', 'modifier': 2 },
                 { 'name': 'Edge (IniHaHve)', 'modifier': 2 },
@@ -357,7 +422,7 @@ const defaultData = {
         {
             "race": 'Parasite',
             'cost': 16,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_parasite-min.png', 'alt': 'Anime5E_parasite.png – Chabibit' },
             'race_mods': [
                 { 'name': 'Elasticity (Two limbs stretch 5x; +4 grappling checks)', 'modifier': 4 },
                 { 'name': 'Extra AcHons – Lesser (1 Extra AcHon/round; not attacks)', 'modifier': 2 },
@@ -370,7 +435,7 @@ const defaultData = {
         {
             "race": 'Satyr',
             'cost': 7,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_satyr-min.png', 'alt': 'Anime5E_satyr.png – Niko Geyer' },
             'race_mods': [
                 { 'name': 'Constitution +', 'modifier': 1 },
                 { 'name': 'Charisma +', 'modifier': 1 },
@@ -384,7 +449,7 @@ const defaultData = {
         {
             "race": 'Slime',
             'cost': 11,
-            'img': '../assets/',
+            'image': { 'name': 'Anime5E_slime-min.png', 'alt': 'Anime5E_slime.png – Niko Geyer' },
             'race_mods': [
                 { 'name': 'ConsHtuHon +', 'modifier': 1 },
                 { 'name': 'Charisma +', 'modifier': 2 },
@@ -406,7 +471,7 @@ const defaultData = {
         {
             "race": 'Tiefling',
             'cost': 12,
-            'img': '../assets/',
+            'image': { 'name': '', 'alt': '' },
             'race_mods': [{ 'name': '', 'modifier': 0 }]
         }
     ],

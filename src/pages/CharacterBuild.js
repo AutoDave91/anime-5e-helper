@@ -415,10 +415,14 @@ const CharacterBuild = () => {
                                 {<p>{charisma.value >= 1 ? `+${charisma.value}` : charisma.value}</p>}
                             </div>
                         </div>
-                        {selectedRace &&
+                        {selectedRace.image &&
                             <div className="raceInfoWrapper">
+                                {selectedRace.image.name !== '' && <img className='defaultRaceImage' src={require(`../assets/${selectedRace.image.name}`)} alt={selectedRace.image.alt} />}
                                 {selectedRace.race_mods && <div>
-                                    <div className='raceInfo'><h4>Attribute/Defect</h4><h4>Points</h4></div>
+                                    <div className='raceInfo'>
+                                        <h4>Attribute/Defect</h4>
+                                        <h4>Points</h4>
+                                    </div>
                                     <ul>
                                         {selectedRace.race_mods.map((race) => (
                                             <li className='raceInfo'><p>{race.name}</p><p>{race.modifier}</p></li>

@@ -2,7 +2,7 @@ import React, {
     useEffect,
     useState
 } from "react";
-import defaultData from "../defaultData";
+import defaultData from "../data/defaultData";
 // import { Link } from "react-router-dom";
 const { playableRaces, attributes, defects } = defaultData
 

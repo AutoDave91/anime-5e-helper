@@ -10,6 +10,7 @@ import './App.css';
 // Pages
 import Home from "./pages/Home";
 import CharacterBuild from "./pages/CharacterBuild";
+import Legal from './pages/Legal';
 
 // Components
 import Navbar from "./components/Navbar";
@@ -30,6 +31,10 @@ function App() {
             <Route
               path="/build-character"
               element={<CharacterBuild />}
+            />
+            <Route
+              path='/legal'
+              element={<Legal />}
             />
           </Routes>
         </div>
